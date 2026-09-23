@@ -1,0 +1,12 @@
+[
+  {
+    "modid": "banking_villagers",
+    "name": "Banking Villagers",
+    "version": "0.1.0",
+    "mcversion": "1.12.2",
+    "description": "Personal banks, banker villagers and configurable upgrades.",
+    "authorList": [
+      "Nanonaitor"
+    ]
+  }
+]

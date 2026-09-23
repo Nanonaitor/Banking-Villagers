@@ -1,0 +1,19 @@
+package com.nanonaitor.banking;
+import net.minecraft.inventory.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.init.*;
+public final class BoothMenu extends Container {
+ public final BlockPos pos;private final EntityPlayer owner;public final int[] data=new int[8];
+ public BoothMenu(InventoryPlayer inv,BlockPos p){owner=inv.player;pos=p;for(int r=0;r<3;r++)for(int c=0;c<9;c++)addSlotToContainer(new Slot(inv,c+r*9+9,8+c*18,166+r*18));for(int c=0;c<9;c++)addSlotToContainer(new Slot(inv,c,8+c*18,224));}
+ public Item currency(){try{Item i=Item.REGISTRY.getObject(new ResourceLocation(BankConfig.currencyItem));return i==null||i==Items.AIR?Items.EMERALD:i;}catch(IllegalArgumentException ex){return Items.EMERALD;}}
+ private BankerEntity banker(){for(net.minecraft.entity.Entity e:owner.world.loadedEntityList)if(e instanceof BankerEntity){BankerEntity b=(BankerEntity)e;if(b.isEntityAlive()&&!b.isChild()&&pos.equals(b.booth))return b;}return null;}
+ private void assign(){if(banker()!=null)return;for(BankerEntity b:owner.world.getEntitiesWithinAABB(BankerEntity.class,new AxisAlignedBB(pos).grow(8))){if(!b.isChild()&&(b.booth==null||owner.world.getBlockState(b.booth).getBlock()!=BankingVillagers.BOOTH)){b.booth=pos;break;}}}
+ @Override public void detectAndSendChanges(){if(!owner.world.isRemote){assign();BankData.Account a=BankData.get(owner.world).account(owner.getUniqueID());data[0]=a.space?1:0;data[1]=a.stack?1:0;data[2]=BankConfig.spaceCost;data[3]=BankConfig.stackCost;data[4]=Item.getIdFromItem(currency());int total=0;for(ItemStack s:owner.inventory.mainInventory)if(s.getItem()==currency())total+=s.getCount();data[5]=total;BankerEntity b=banker();data[6]=b==null?0:1;data[7]=b==null?0:(int)Math.max(0,b.getEntityData().getLong("BellUntil")-owner.world.getTotalWorldTime());}super.detectAndSendChanges();for(IContainerListener l:listeners)for(int i=0;i<data.length;i++)l.sendWindowProperty(this,i,data[i]);}
+ @Override public void updateProgressBar(int id,int v){if(id>=0&&id<data.length)data[id]=v;}
+ @Override public boolean canInteractWith(EntityPlayer p){return p.getDistanceSq(pos)<64&&p.world.getBlockState(pos).getBlock()==BankingVillagers.BOOTH;}
+ @Override public ItemStack transferStackInSlot(EntityPlayer p,int i){return ItemStack.EMPTY;}
+ @Override public boolean enchantItem(EntityPlayer p,int kind){if(p!=owner||p.world.isRemote||!canInteractWith(p))return false;detectAndSendChanges();if(kind==2){BankerEntity b=banker();if(b==null||data[7]>0)return false;b.getEntityData().setLong("BellUntil",p.world.getTotalWorldTime()+20);for(EnumFacing f:EnumFacing.HORIZONTALS){BlockPos at=pos.offset(f);if(!p.world.isBlockLoaded(at)||!p.world.isAirBlock(at)||!p.world.isAirBlock(at.up())||!p.world.getBlockState(at.down()).isSideSolid(p.world,at.down(),EnumFacing.UP))continue;net.minecraft.block.Block floor=p.world.getBlockState(at.down()).getBlock();if(floor==Blocks.MAGMA||floor==Blocks.CACTUS)continue;AxisAlignedBB box=b.getEntityBoundingBox().offset(at.getX()+.5-b.posX,at.getY()-b.posY,at.getZ()+.5-b.posZ);if(!p.world.getCollisionBoxes(b,box).isEmpty()||!p.world.checkNoEntityCollision(box,b))continue;b.getNavigator().clearPath();b.setPositionAndUpdate(at.getX()+.5,at.getY(),at.getZ()+.5);p.world.playSound(null,pos,SoundEvents.BLOCK_NOTE_BELL,SoundCategory.BLOCKS,1,1);return true;}return false;}if(kind<0||kind>1||data[kind]>0||data[5]<data[kind+2])return false;int cost=data[kind+2];for(ItemStack s:p.inventory.mainInventory)if(s.getItem()==currency()){int n=Math.min(cost,s.getCount());s.shrink(n);cost-=n;if(cost==0)break;}BankData.Account a=BankData.get(p.world).account(p.getUniqueID());if(kind==0)a.space=true;else a.stack=true;a.dirty();p.inventory.markDirty();detectAndSendChanges();return true;}
+}

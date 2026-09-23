@@ -1,0 +1,33 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "PVP",
+    "PGP",
+    "SSS"
+  ],
+  "key": {
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "V": [
+      {
+        "item": "minecraft:glass_pane"
+      },
+      {
+        "item": "minecraft:stained_glass_pane",
+        "data": 32767
+      }
+    ],
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "item": "minecraft:stone_slab",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "banking_villagers:bank_booth"
+  }
+}

@@ -1,0 +1,4 @@
+tile.banking_villagers.bank_booth.name=Bank Booth
+item.banking_villagers.space_certificate.name=Bank Space
+item.banking_villagers.stack_certificate.name=Double Stacking
+entity.banking_villagers.banker.name=Banker

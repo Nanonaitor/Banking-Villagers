@@ -1,0 +1,284 @@
+{
+  "textures": {
+    "wood": "minecraft:blocks/log_big_oak",
+    "counter": "minecraft:blocks/stonebrick",
+    "panel": "minecraft:blocks/stone_slab_top",
+    "gold": "minecraft:blocks/gold_block",
+    "glass": "minecraft:blocks/glass_white",
+    "particle": "minecraft:blocks/log_big_oak"
+  },
+  "elements": [
+    {
+      "from": [
+        1,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        14,
+        15
+      ],
+      "faces": {
+        "down": {
+          "texture": "#wood",
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ]
+        },
+        "up": {
+          "texture": "#wood",
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ]
+        },
+        "north": {
+          "texture": "#wood",
+          "uv": [
+            1,
+            2,
+            15,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#wood",
+          "uv": [
+            1,
+            2,
+            15,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#wood",
+          "uv": [
+            1,
+            2,
+            15,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#wood",
+          "uv": [
+            1,
+            2,
+            15,
+            16
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        13,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#counter",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#counter",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "north": {
+          "texture": "#counter",
+          "uv": [
+            0,
+            0,
+            16,
+            3
+          ]
+        },
+        "south": {
+          "texture": "#counter",
+          "uv": [
+            0,
+            0,
+            16,
+            3
+          ]
+        },
+        "west": {
+          "texture": "#counter",
+          "uv": [
+            0,
+            0,
+            16,
+            3
+          ]
+        },
+        "east": {
+          "texture": "#counter",
+          "uv": [
+            0,
+            0,
+            16,
+            3
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        2,
+        2,
+        0.8
+      ],
+      "to": [
+        14,
+        12,
+        1
+      ],
+      "faces": {
+        "down": {
+          "texture": "#panel",
+          "uv": [
+            2,
+            15,
+            14,
+            15.2
+          ]
+        },
+        "up": {
+          "texture": "#panel",
+          "uv": [
+            2,
+            0.8,
+            14,
+            1
+          ]
+        },
+        "north": {
+          "texture": "#panel",
+          "uv": [
+            2,
+            4,
+            14,
+            14
+          ]
+        },
+        "south": {
+          "texture": "#panel",
+          "uv": [
+            2,
+            4,
+            14,
+            14
+          ]
+        },
+        "west": {
+          "texture": "#panel",
+          "uv": [
+            0.8,
+            4,
+            1,
+            14
+          ]
+        },
+        "east": {
+          "texture": "#panel",
+          "uv": [
+            15,
+            4,
+            15.2,
+            14
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        6,
+        8,
+        0.5
+      ],
+      "to": [
+        10,
+        12,
+        0.8
+      ],
+      "faces": {
+        "down": {
+          "texture": "#gold",
+          "uv": [
+            6,
+            15.2,
+            10,
+            15.5
+          ]
+        },
+        "up": {
+          "texture": "#gold",
+          "uv": [
+            6,
+            0.5,
+            10,
+            0.8
+          ]
+        },
+        "north": {
+          "texture": "#gold",
+          "uv": [
+            6,
+            4,
+            10,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#gold",
+          "uv": [
+            6,
+            4,
+            10,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#gold",
+          "uv": [
+            0.5,
+            4,
+            0.8,
+            8
+          ]
+        },
+        "east": {
+          "texture": "#gold",
+          "uv": [
+            15.2,
+            4,
+            15.5,
+            8
+          ]
+        }
+      }
+    }
+  ]
+}
