@@ -1,0 +1,14 @@
+.gradle/
+build/
+run/
+*.log
+.idea/
+deployment-backups/
+tools/deploy-*.ps1
+tools/install-testing.ps1
+tools/update-*.mjs
+tools/prepare-banker.ps1
+tools/fix-booth-uv.mjs
+art/banker-generated.png
+art/certificate-source.png
+art/PROMPT.txt

@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+'
+}
+group = 'com.nanonaitor.banking'
+version = '0.1.8'
+base.archivesName = 'banking-villagers-1.20.1'
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    copyIdeResources = true
+    runs {
+        configureEach { workingDirectory project.file('run'); mods { banking_villagers { source sourceSets.main } } }
+        client { if(project.hasProperty('clientSmokeTest')) property 'banking.clientSmokeTest','true' }
+        server { args '--nogui' }
+        gameTestServer { property 'forge.enabledGameTestNamespaces', 'banking_villagers,forge' }
+    }
+}
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.18'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+mixin { add sourceSets.main, 'banking_villagers.refmap.json'; config 'banking_villagers.mixins.json' }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+processResources { inputs.property 'version', project.version; filesMatching('META-INF/mods.toml') { expand version: project.version } }
+jar { manifest { attributes 'MixinConfigs': 'banking_villagers.mixins.json' } }
+jar.finalizedBy('reobfJar')
+tasks.configureEach {
+    if(name=='runGameTestServer') doFirst { copy { from 'gameteststructures'; into 'run/gameteststructures' } }
+}

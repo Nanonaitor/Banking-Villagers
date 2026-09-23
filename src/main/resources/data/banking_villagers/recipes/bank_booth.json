@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PVP",
+    "PGP",
+    "SSS"
+  ],
+  "key": {
+    "P": {
+      "tag": "minecraft:planks"
+    },
+    "V": {
+      "tag": "banking_villagers:glass_panes"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "item": "minecraft:polished_deepslate_slab"
+    }
+  },
+  "result": {
+    "item": "banking_villagers:bank_booth"
+  }
+}

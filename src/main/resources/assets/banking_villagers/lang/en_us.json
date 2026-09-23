@@ -1,0 +1,14 @@
+{
+  "itemGroup.banking_villagers": "Banking Villagers",
+  "entity.banking_villagers.banker": "Banker",
+  "entity.minecraft.villager.banking_villagers.banker": "Banker",
+  "block.banking_villagers.bank_booth": "Bank Booth",
+  "item.banking_villagers.banker_spawn_egg": "Banker Spawn Egg",
+  "item.banking_villagers.space_certificate": "Bank Space Certificate",
+  "item.banking_villagers.stack_certificate": "Double Stacking Certificate",
+  "container.banking_villagers.bank": "Personal Bank",
+  "container.banking_villagers.shop": "Bank Booth — Upgrades",
+  "tooltip.banking_villagers.redeem": "Right-click an adult Banker to redeem. Consumed on success.",
+  "tooltip.banking_villagers.space": "Multiplies personal bank capacity (default: ×2).",
+  "tooltip.banking_villagers.stack": "Multiplies bank-only stack limits (default: ×2)."
+}

@@ -1,0 +1,21 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+[[mods]]
+modId="banking_villagers"
+version="${version}"
+displayName="Banking Villagers"
+authors="Nanonaitor"
+description='''Personal, persistent village banks with configurable certificate upgrades.'''
+[[dependencies.banking_villagers]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.18,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.banking_villagers]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.20.2)"
+ordering="NONE"
+side="BOTH"
