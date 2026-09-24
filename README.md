@@ -13,6 +13,12 @@ Personal banks accessed through banker villagers. Requires Forge 14.23.5.2860 an
 - Bankers use normal villager AI and the black banker coat.
 - Villager breeding has a configurable 10% chance to produce a banker baby. Babies grow into bankers; adults do not change jobs at a block in this version.
 - Bank houses containing a banker and booth can appear in newly generated villages.
+- Banker is part of Forge's normal profession pool. Newly generated villagers
+  and ordinary villager spawn eggs can roll the Banker profession; existing
+  villagers are not rerolled when chunks reload. The chance depends on the
+  number of professions installed, just like other randomly chosen professions.
+- The Banking Villagers creative tab contains the booth and banker spawn egg.
+- Upgrade certificates remain internal GUI assets and are hidden from JEI.
 - A booth can link to an unassigned adult banker within eight blocks when opened. The Call button brings its assigned loaded banker to an empty supported adjacent space, with a one-second cooldown.
 
 ## Recipe

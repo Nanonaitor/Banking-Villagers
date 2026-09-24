@@ -11,7 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 public final class BoothBlock extends Block {
  public static final PropertyBool UPPER=PropertyBool.create("upper");
- public BoothBlock(){super(Material.WOOD);setRegistryName(BankingVillagers.ID,"bank_booth");setUnlocalizedName("banking_villagers.bank_booth");setHardness(2.5F);setCreativeTab(net.minecraft.creativetab.CreativeTabs.DECORATIONS);setDefaultState(blockState.getBaseState().withProperty(UPPER,false));}
+ public BoothBlock(){super(Material.WOOD);setRegistryName(BankingVillagers.ID,"bank_booth");setUnlocalizedName("banking_villagers.bank_booth");setHardness(2.5F);setCreativeTab(BankingVillagers.TAB);setDefaultState(blockState.getBaseState().withProperty(UPPER,false));}
  @Override protected BlockStateContainer createBlockState(){return new BlockStateContainer(this,UPPER);}
  @Override public IBlockState getStateFromMeta(int m){return getDefaultState().withProperty(UPPER,m==1);}
  @Override public int getMetaFromState(IBlockState s){return s.getValue(UPPER)?1:0;}

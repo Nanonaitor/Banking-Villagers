@@ -7,7 +7,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.nbt.NBTTagCompound;
 public final class BankerEntity extends EntityVillager {
  public BlockPos booth;
- public BankerEntity(World w){super(w);enablePersistence();}
+ public BankerEntity(World w){super(w);enablePersistence();if(BankingVillagers.BANKER_PROFESSION!=null)setProfession(BankingVillagers.BANKER_PROFESSION);}
+ @Override public net.minecraft.entity.IEntityLivingData onInitialSpawn(net.minecraft.world.DifficultyInstance difficulty,net.minecraft.entity.IEntityLivingData data){net.minecraft.entity.IEntityLivingData result=super.onInitialSpawn(difficulty,data);if(BankingVillagers.BANKER_PROFESSION!=null)setProfession(BankingVillagers.BANKER_PROFESSION);return result;}
  @Override public boolean processInteract(EntityPlayer p,EnumHand hand){if(isChild())return super.processInteract(p,hand);if(!world.isRemote&&hand==EnumHand.MAIN_HAND)p.openGui(BankingVillagers.instance,0,world,getEntityId(),0,0);return true;}
  @Override public void writeEntityToNBT(NBTTagCompound t){super.writeEntityToNBT(t);if(booth!=null)t.setLong("BankBooth",booth.toLong());}
  @Override public void readEntityFromNBT(NBTTagCompound t){super.readEntityFromNBT(t);if(t.hasKey("BankBooth"))booth=BlockPos.fromLong(t.getLong("BankBooth"));}
